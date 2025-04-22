@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cálculo de Frequências e Separatrizes</title>
+</head>
+<body>
+    <div class="container">
+        <div class="frame" id="frame-k">
+            <div class="frame-title">Digite o número de classes (k):</div>
+            <input type="number" id="entry-k" min="1" placeholder="Número de classes">
+            <button id="btn-confirmar-k">Confirmar</button>
+        </div>
+        
+        <div class="frame hidden" id="frame-fi">
+            <div class="frame-title">Parâmetros e Frequências</div>
+            <div class="scrollable" id="scrollable-fi">
+                <div id="parametros">
+                    <div>
+                        <label for="entry-h">Amplitude (h):</label>
+                        <input type="number" id="entry-h" step="0.01" placeholder="Amplitude">
+                    </div>
+                    <div>
+                        <label for="entry-li-inicial">Li inicial:</label>
+                        <input type="number" id="entry-li-inicial" step="0.01" placeholder="Limite inferior inicial">
+                    </div>
+                </div>
+                
+                <div id="fi-inputs-container" class="fi-inputs"></div>
+                
+                <div id="frame-separatrizes-input">
+                    <div class="frame-title">Selecione as separatrizes que deseja calcular:</div>
+                    
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="var-q" checked>
+                            <label for="var-q">Quartis (Q1, Q2, Q3)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="var-k">
+                            <label for="var-k">Quintis (K1, K2, K3, K4)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="var-d">
+                            <label for="var-d">Decis (D1 a D9)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="var-p">
+                            <label for="var-p">Percentis (P10, P25, etc.)</label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="entry-percentis">Percentis específicos (separados por vírgula):</label>
+                        <input type="text" id="entry-percentis" placeholder="Ex: 10,25,50,75,90">
+                    </div>
+                </div>
+                
+                <button id="btn-calcular">Calcular</button>
+            </div>
+        </div>
+        
+        <div class="frame hidden" id="frame-resultados">
+            <div style="text-align: right;">
+                <button id="btn-copiar" class="info">Copiar Tabela</button>
+            </div>
+            
+            <div class="scrollable">
+                <table id="tabela-resultados">
+                    <thead>
+                        <tr>
+                            <th>i</th>
+                            <th>AIC/AID</th>
+                            <th>xi</th>
+                            <th>fi</th>
+                            <th>fi.xi</th>
+                            <th>fri</th>
+                            <th>%fri</th>
+                            <th>Graus fri</th>
+                            <th>Fi</th>
+                            <th>Fri</th>
+                            <th>%Fri</th>
+                            <th>Graus Fri</th>
+                            <th>xi²</th>
+                            <th>fi.xi²</th>
+                            <th>yi</th>
+                            <th>fi.yi</th>
+                            <th>yi²</th>
+                            <th>fi.yi²</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-body">
+                        <!-- Dados serão inseridos aqui -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="medidas-container" class="measures"></div>
+            
+            <div id="separatrizes-container" class="separatrizes"></div>
+            
+            <div id="correspondencias-container" class="correspondencias">
+                <div class="frame-title">Correspondências:</div>
+                <div class="corr-columns">
+                    <div class="corr-column">
+                        <div>Q₂ = D₅ = P₅₀ = Mediana</div>
+                        <div>Q₁ = P₂₅</div>
+                        <div>Q₃ = P₇₅</div>
+                    </div>
+                    <div class="corr-column">
+                        <div>K₁ = D₂ = P₂₀</div>
+                        <div>K₂ = D₄ = P₄₀</div>
+                        <div>K₃ = D₆ = P₆₀</div>
+                        <div>K₄ = D₈ = P₈₀</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
